@@ -6,7 +6,7 @@
 #    By: lwilliam <lwilliam@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/15 18:10:19 by lwilliam          #+#    #+#              #
-#    Updated: 2022/08/15 20:56:34 by lwilliam         ###   ########.fr        #
+#    Updated: 2022/08/23 10:36:32 by lwilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,14 @@ S_SRC = server.c
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-all : libft $(NAME)
+all : $(NAME)
 
 $(NAME) :
-	$(CC) $(FLAGS) $(C_SRC) $(NAME) -o client
-	$(CC) $(FLAGS) $(S_SRC) $(NAME) -o server
+	make libft
+	$(CC) $(CFLAGS) $(C_SRC) $(NAME) -o client
+	$(CC) $(CFLAGS) $(S_SRC) $(NAME) -o server
 
 libft:
 	make -C libft_printf
@@ -42,5 +43,3 @@ fclean : clean
 
 re : fclean all
 	make re -C libft_printf
-
-.PHONY : $(NAME)
